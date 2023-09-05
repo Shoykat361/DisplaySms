@@ -12,7 +12,7 @@
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:gravity="center"
-        android:text="Received SMS Message"/>
+        android:text="Received  Message"/>
 
     <TextView
         android:id="@+id/textViewSmsContent"

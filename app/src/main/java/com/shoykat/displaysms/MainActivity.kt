@@ -6,26 +6,16 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
-
+import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
 import android.content.IntentFilter
 import android.os.Build
-import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import androidx.core.app.NotificationManagerCompat
-
-
-
-
-
-
-
 
 
 class MainActivity : AppCompatActivity() {

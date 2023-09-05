@@ -5,39 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.telephony.SmsMessage
 
-/*class SmsReceiver : BroadcastReceiver() {
-    //handle only clear button
-
-    interface MessageCallback {
-        fun onMessageReceived(message: String, phoneNumber: String)
-    }
-
-    private var messageCallback: MessageCallback? = null
-
-    fun setMessageCallback(callback: MessageCallback) {
-        messageCallback = callback
-    }
-
-    override fun onReceive(context: Context?, intent: Intent?) {
-        if (intent?.action == "android.provider.Telephony.SMS_RECEIVED") {
-            val bundle = intent.extras
-            val messages = bundle?.get("pdus") as Array<*>?
-
-            messages?.forEach { message ->
-                val smsMessage = SmsMessage.createFromPdu(message as ByteArray)
-                val messageText = smsMessage.messageBody
-                val phoneNumber = smsMessage.originatingAddress
-                if (phoneNumber != null) {
-                    messageCallback?.onMessageReceived(messageText, phoneNumber)
-                }
-            }
-        }
-    }
-}*/
 
 
 class SmsReceiver : BroadcastReceiver() {
-    //working
 
     private var messageCallback: MessageCallback? = null
 

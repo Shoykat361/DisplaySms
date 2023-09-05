@@ -19,7 +19,6 @@ import androidx.core.content.ContextCompat
 
 
 class MainActivity : AppCompatActivity() {
-    //working code
 
     private val smsPermissionCode = 101
     private lateinit var messageListView: ListView
@@ -82,9 +81,10 @@ class MainActivity : AppCompatActivity() {
 
         textViewSmsContent.text = message
 
-        // Use a consistent notification ID (e.g., 1) to replace existing notifications
+        // Use a consistent notification ID  to replace existing notifications
         val notificationId = 1
-        val channelId = "sms_channel" // The same channel ID created in step 1 (if applicable)
+        val channelId = "sms_channel"
+        // The same channel ID created in step 1 (if applicable)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelName = "SMS Channel"
@@ -121,76 +121,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-/*class MainActivity : AppCompatActivity() {
-    //work only clear button
-
-    private val smsPermissionCode = 101
-    private lateinit var messageListView: ListView
-    private lateinit var messageAdapter: ArrayAdapter<String>
-    private lateinit var notificationManager: NotificationManagerCompat
-    private val smsMessagesByNumber = mutableMapOf<String, MutableList<String>>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        messageListView = findViewById(R.id.messageListView)
-        messageAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1)
-        messageListView.adapter = messageAdapter
-
-        requestSmsPermission()
-
-        notificationManager = NotificationManagerCompat.from(this)
-
-        // Register the SMS receiver
-        val smsReceiver = SmsReceiver()
-        smsReceiver.setMessageCallback(object : SmsReceiver.MessageCallback {
-            override fun onMessageReceived(message: String, phoneNumber: String) {
-                // Check if this phone number is already in the map
-                if (smsMessagesByNumber.containsKey(phoneNumber)) {
-                    // Append the message to the existing list for this number
-                    smsMessagesByNumber[phoneNumber]?.add(message)
-                } else {
-                    // Create a new entry for this phone number
-                    val messages = mutableListOf(message)
-                    smsMessagesByNumber[phoneNumber] = messages
-                }
-
-                updateNotification()
-                messageAdapter.add(message)
-            }
-
-
-        })
-
-        val filter = IntentFilter("android.provider.Telephony.SMS_RECEIVED")
-        registerReceiver(smsReceiver, filter)
-
-        val clearButton = findViewById<Button>(R.id.clearButton)
-        clearButton.setOnClickListener {
-            messageAdapter.clear()
-        }
-    }
-
-    private fun requestSmsPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.RECEIVE_SMS
-            ) != PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.RECEIVE_SMS),
-                smsPermissionCode
-            )
-        }
-    }
-
-    private fun updateNotification() {
-        // Build and display the custom notification here
-        // You can use the aggregated messages in smsMessagesByNumber
-        // to create a custom notification layout.
-        // Set a PendingIntent to open the details activity when clicked.
-        // Use NotificationManager to update or create the notification.
-    }
-}*/
